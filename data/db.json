@@ -1,0 +1,25 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "questionText": "What is the capital of France?",
+      "answers": [
+        "London",
+        "Paris",
+        "Berlin",
+        "Rome"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "questionText": "What is capital of China",
+      "answers": [
+        "Paruse",
+        "B",
+        "T"
+      ],
+      "correctAnswer": 2,
+      "id": 2
+    }
+  ]
+}

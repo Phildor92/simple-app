@@ -1,0 +1,11 @@
+<form [formGroup]="questionForm" (ngSubmit)="onSubmit($event)">
+  <div formArrayName="answers">
+    <div *ngFor="let answer of questionForm.get('answers')?.value; let i = index">
+      <label>Answer {{i + 1}}:</label>
+      <input type="text" formControlName="answer{{i}}" />
+      <button (click)="addAnswer()">Add</button>
+    </div>
+  </div>
+  <button class="btn btn-primary" type="submit"></button>
+</form>
+
