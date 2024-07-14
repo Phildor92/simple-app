@@ -41,9 +41,7 @@ export class QuestionFormComponent implements OnInit {
     this.questionForm = this.nnfb.group({
       id: this.nnfb.control(0),
       questionText: this.nnfb.control('', [Validators.required]),
-      answers: this.nnfb.array([
-        new FormControl('a'),
-      ], [Validators.required]),
+      answers: this.nnfb.array([]),
       correctAnswer: this.nnfb.control(0, [Validators.required])
     });
   }
@@ -55,13 +53,20 @@ export class QuestionFormComponent implements OnInit {
   }
 
   addAnswer() {
-    this.newQuestion.answers.push('');
+    const answerForm = this.nnfb.group({
+      answerText: ['', [Validators.required]],
+    });
+
+    this.answers.push(answerForm);
+    console.log(this.answers)
+    console.log(this.questionForm.value)
   }
 
   removeAnswer(index: number) {
-    this.newQuestion.answers.splice(index, 1);
+    this.answers.removeAt(index);
   }
 
-
-
+  get answers(){
+    return this.questionForm.controls['answers'] as FormArray;
+  }
 }

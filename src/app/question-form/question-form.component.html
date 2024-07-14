@@ -1,11 +1,16 @@
 <form [formGroup]="questionForm" (ngSubmit)="onSubmit($event)">
-  <div formArrayName="answers">
-    <div *ngFor="let answer of questionForm.get('answers')?.value; let i = index">
-      <label>Answer {{i + 1}}:</label>
-      <input type="text" formControlName="answer{{i}}" />
-      <button (click)="addAnswer()">Add</button>
-    </div>
+  <div class="form-control">
+    <label for="questionText"></label>
+    <input name="questionText" id="questionText" placeholder="Enter question">
   </div>
-  <button class="btn btn-primary" type="submit"></button>
+  <div formArrayName="answers">
+    <div *ngFor="let answer of answers.controls; let i = index" class="form-control">
+        <label>Answer {{i + 1}}:</label>
+        <input type="text" formControlName="answerText" placeholder="Enter answer" />
+        <button class="btn btn-danger" (click)="removeAnswer(i)" type="button">X</button>
+    </div>
+    <button (click)="addAnswer()" type="button" class="btn btn-secondary">Add</button>
+  </div>
+  <button class="btn btn-primary" type="submit">Save</button>
 </form>
 
